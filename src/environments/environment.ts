@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  hostname: "localhost",
+  port: 3000,
+  getApiUrl: function() {
+    return `http://${this.hostname}:${this.port}`
+  },
+  
+  tokenHeader: "JWT_TOKEN"
 };
 
 /*

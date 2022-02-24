@@ -1,0 +1,126 @@
+<!-- <div class="wrapper">
+    <div class="form">
+        <div class="btn-group" role="group">
+            <input type="radio" class="btn-check" name="btnradio" id="login" autocomplete="off" checked>
+            <label (click)="changeForm()" class="btn btn-outline-primary" for="login">Login</label>
+        
+            <input (click)="changeForm()" type="radio" class="btn-check" name="btnradio" id="registration" autocomplete="off">
+            <label class="btn btn-outline-primary" for="registration">Registration</label>
+        </div>
+        <div *ngIf="isRegistration">
+            <form (ngSubmit)="register()" [formGroup]="profileForm">
+                <mat-form-field class="form-input-field">
+                    <mat-label>Login</mat-label>
+                    <input type="text" matInput formControlName="login" required/>
+                    <mat-error *ngIf="profileFormLogin?.hasError('required')">
+                        <strong>Login is required</strong>
+                    </mat-error>
+                </mat-form-field><br>
+
+                <mat-form-field class="form-input-field">
+                    <mat-label>Name</mat-label>
+                    <input type="text" matInput formControlName="name" required/>
+                    <mat-error *ngIf="profileFormName?.hasError('required')">
+                        <strong>Name is required</strong>
+                    </mat-error>
+                </mat-form-field><br>
+
+                <mat-form-field class="form-input-field">
+                    <input matInput placeholder="Password" [type]="hidePassword ? 'password' : 'text'" formControlName="password" required>
+                    <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error *ngIf="profileFormPassword?.hasError('required')">
+                        <strong>Password is required</strong>
+                    </mat-error>
+                </mat-form-field><br>
+
+                <button mat-flat-button color="primary" class="btn-form">Register</button>
+            </form>
+        </div>
+        <div *ngIf="!isRegistration">
+            <form (ngSubmit)="signIn()" [formGroup]="profileForm">
+                <mat-form-field class="form-input-field">
+                    <mat-label>Login</mat-label>
+                    <input type="text" matInput formControlName="login" required/>
+                    <mat-error *ngIf="profileFormLogin?.hasError('required')">
+                        <strong>Login is required</strong>
+                    </mat-error>
+                </mat-form-field><br>
+
+                <mat-form-field class="form-input-field">
+                    <input matInput placeholder="Password" [type]="hidePassword ? 'password' : 'text'" formControlName="password" required>
+                    <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error *ngIf="profileFormPassword?.hasError('required')">
+                        <strong>Password is required</strong>
+                    </mat-error>
+                </mat-form-field><br>
+
+                <button  mat-flat-button color="primary" class="btn-form">Login</button>
+            </form>
+        </div>
+    </div>
+</div> -->
+
+<div class="wrapper">
+    <div class="form">
+        <mat-tab-group mat-align-tabs="center">
+            <mat-tab label="Login">
+                <form (ngSubmit)="signIn()" [formGroup]="signInForm">
+                    <mat-form-field class="form-input-field">
+                        <mat-label>Login</mat-label>
+                        <input type="text" matInput formControlName="login" required/>
+                        <mat-error *ngIf="signInFormLogin?.hasError('required')">
+                            <strong>Login is required</strong>
+                        </mat-error>
+                    </mat-form-field><br>
+
+                    <mat-form-field class="form-input-field">
+                        <input matInput placeholder="Password" [type]="hidePassword ? 'password' : 'text'" formControlName="password" required>
+                        <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        <mat-error *ngIf="signInFormPassword?.hasError('required')">
+                            <strong>Password is required</strong>
+                        </mat-error>
+                    </mat-form-field><br>
+
+                    <div class="btn-form">
+                        <button  mat-flat-button color="primary" [disabled]="isSignInFormFieldsAreEmpty()">
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </mat-tab>
+            <mat-tab label="Registration">
+                <form (ngSubmit)="register()" [formGroup]="registerForm">
+                    <mat-form-field class="form-input-field">
+                        <mat-label>Login</mat-label>
+                        <input type="text" matInput formControlName="login" required/>
+                        <mat-error *ngIf="registerFormLogin?.hasError('required')">
+                            <strong>Login is required</strong>
+                        </mat-error>
+                    </mat-form-field><br>
+
+                    <mat-form-field class="form-input-field">
+                        <mat-label>Name</mat-label>
+                        <input type="text" matInput formControlName="name" required/>
+                        <mat-error *ngIf="registerFormName?.hasError('required')">
+                            <strong>Name is required</strong>
+                        </mat-error>
+                    </mat-form-field><br>
+
+                    <mat-form-field class="form-input-field">
+                        <input matInput placeholder="Password" [type]="hidePassword ? 'password' : 'text'" formControlName="password" required>
+                        <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        <mat-error *ngIf="registerFormPassword?.hasError('required')">
+                            <strong>Password is required</strong>
+                        </mat-error>
+                    </mat-form-field><br>
+
+                    <div class="btn-form">
+                        <button mat-flat-button color="primary" class="btn-form" [disabled]="isRegisterFormFieldsAreEmpty()">
+                            Register
+                        </button>
+                    </div>
+                </form>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>
