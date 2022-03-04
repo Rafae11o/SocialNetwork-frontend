@@ -6,12 +6,19 @@ export const environment = {
   production: false,
 
   hostname: "localhost",
-  port: 3000,
+  port: 8080,
+  
   getApiUrl: function() {
     return `http://${this.hostname}:${this.port}`
   },
   
-  tokenHeader: "JWT_TOKEN"
+  tokenHeader: "JWT_TOKEN",
+
+  socketEndpoint: 'ws',
+
+  getSocketUrl: function(){
+    return `http://${this.hostname}:${this.port}/${this.socketEndpoint}`
+  }
 };
 
 /*

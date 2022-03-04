@@ -5,6 +5,7 @@ import { Response, ResponseWithData } from 'src/app/entities/response.entities';
 import { FormGroup, FormControl, Validators, FormGroupDirective, NgForm} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { SnackBarService } from 'src/app/services/snack-bar.service';
 
 @Component({
   selector: 'app-login-page',
@@ -27,7 +28,7 @@ export class LoginPageComponent implements OnInit {
   hidePassword = true;
 
   constructor(private authService: AuthService,
-              private toastr: ToastrService,
+              private snackBarService: SnackBarService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -42,11 +43,10 @@ export class LoginPageComponent implements OnInit {
     this.authService.register(registerUserInfo).subscribe({
       next: (response) => {
         console.log('login page[register]', response)
-        this.toastr.success(response.message);
+        this.snackBarService.openSuccessSnackBar(response.message);
       },
       error: (e) => {
         console.log('login page[register]', e);
-        this.toastr.error(e.error.message);
       }
     })
   }
@@ -63,7 +63,6 @@ export class LoginPageComponent implements OnInit {
       },
       error: (e) => {
         console.log('login page[signIn]', e);
-        this.toastr.error(e.error.message);
       }
     })
   }
