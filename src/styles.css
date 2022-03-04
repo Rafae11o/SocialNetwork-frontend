@@ -196,3 +196,12 @@ body{
       width: 25em;
     }
   }
+
+.mat-snack-bar-container{
+    /* margin: 0 !important; */
+    padding: 0 !important;
+}
+button {
+  background-color: transparent;
+  border: none;
+}
