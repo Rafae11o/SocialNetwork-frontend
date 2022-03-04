@@ -57,7 +57,11 @@ export class AuthService {
     this.cookieService.set(environment.tokenHeader, response.data.token, new Date(response.data.expirationTime));
   }
 
-  isLoggedIn(){
+  getToken(): string {
+    return this.cookieService.get(environment.tokenHeader);
+  }
+
+  isLoggedIn(): boolean{
     console.log('auth service[isLoggedIn]', this.cookieService.get(environment.tokenHeader));
     return this.cookieService.check(environment.tokenHeader);
   }
