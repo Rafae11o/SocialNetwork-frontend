@@ -5,7 +5,7 @@ import {
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import { NotificationComponent } from '../components/notification/notification.component';
-import { NotificationType, SnackBarData } from '../entities/notification.enities';
+import { NotificationType, SnackBarData } from '../entities/notification.entities';
 
 @Injectable({
   providedIn: 'root'
