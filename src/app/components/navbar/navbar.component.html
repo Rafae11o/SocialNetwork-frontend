@@ -1,2 +1,48 @@
-<p>navbar works!</p>
-<router-outlet></router-outlet>
+<header>
+    <div class="header-content">
+        <div class="logo">
+            <!-- <img class="logo_img" src="../../assets/corgi.png" alt=""> -->
+            <h1 class="logo_text">Logo</h1>
+        </div>
+        <div class="search-input-wrapper">
+            <form>
+                <input class="search-input"
+                       type="text"
+                       placeholder="&#xF002; Search for a street"
+                       [formControl]="control"
+                       [matAutocomplete]="auto"
+                       style="font-family: Roboto, FontAwesome">
+                <!-- <mat-input-container>
+                    <mat-placeholder>
+                        <mat-icon>face</mat-icon> Name
+                    </mat-placeholder>
+                    <input mdInput name="name">
+                </mat-input-container> -->
+                <!-- <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Clearable input</mat-label>
+                    <input [formControl]="control" [matAutocomplete]="auto" type="text" [(ngModel)]="value">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>              -->
+
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let user of values | async" [value]="value">
+                    <div class="search-result-item">
+                        <span>{{user.login}}</span><br>
+                        <small>{{user.name}}</small>
+                    </div>
+                  </mat-option>
+                </mat-autocomplete>
+            </form>
+        </div>
+        <div class="profile">
+            <img class="profile_img" src="../../assets/img_avatar.png" alt="">
+        </div>
+    </div>
+</header>
+<main>
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+</main>

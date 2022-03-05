@@ -9,3 +9,8 @@ export class UserRegistrationInfo {
         this.password = password;
     }
 }
+
+export class UserInfo {
+    login?: string;
+    name?: string;
+}
